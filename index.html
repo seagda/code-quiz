@@ -15,16 +15,16 @@
            <section class="quiz-title col-md-8">
                <h1>Are You a Replicant?</h1>
            </section>
-           <section class="timer col-md-4 align-text-bottom">Time Left: <span id="time-disp"></span></section>
+           <section class="timer col-md-4 align-text-bottom">Time Left: <span id="time-disp">4:00</span></section>
        </section>
        <section class="row">
            <section class="col-md-12 display">
                
-                <div class="question-title" id="curr-quest">Instructions:</div>
+                <div class="question-title" id="curr-quest">Answer the following questions by clicking the response that feels most correct.</div>
                 <div class="question-ans">
                     <ul id="ans-list">
-                        <li id="ans1">Answer the following questions to the best of your ability. Questions are designed to elicit emotional responses.</li>
-                        <li id="ans2">You will have 5 minutes to answer the questions.</li>
+                        <li id="ans1">Questions are designed to elicit emotional responses.</li>
+                        <li id="ans2">You will have 4 minutes to answer the questions.</li>
                         <li id="ans3">Certain answers will deduct from your time remaining.</li>
                         <li id="ans4">Your assessment will be provided upon completion.</li>
                     </ul>
@@ -33,18 +33,21 @@
             </section>
        </section>
        <section class="button-row row">
-           <section class ="col-md-4"></section>
-           <section class ="quiz-start col-md-4">
-               <button type="button" class="btn btn-lg btn-outline-success">Begin Assessment</button>
-               <button type="button" class="btn btn-lg btn-outline-warning">View Scores</button>
+           <section class ="col-md-3"></section>
+           <section class ="buttons-row col-md-6">
+               <button type="button" class="btn btn-lg btn-outline-success" id="start-button">Begin Assessment</button>
+               <button type="button" class="btn btn-lg btn-outline-warning" id="view-scores">View Scores</button>
            </section>
-           <section class ="col-md-4"></section>
+           <section class ="col-md-3"></section>
         </section>
    </main>
    <footer>
        <p>* Not a real <a href="https://nautil.us/blog/the-science-behind-blade-runners-voight_kampff-test" target="_blank">Voight-Kampff assessment</a>. Not intended to diagnose or treat any medical or psychological condition, disorder, or disease.<br> If you or someone you love is a replicant, you can <a href="https://www.independent.co.uk/news/science/ai-robots-human-rights-tech-science-ethics-a8965441.html" target="_blank">read this</a> or <a href="https://www.betterhelp.com/" target="_blank">go here</a>. Version VKA-2021.001 by <a href="http://github.com/seagda" target="_blank">@seagda</a>.</p> 
     </footer>
     
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/1.25.0/luxon.min.js"></script>
+<script src="./assets/script/script.js"></script>
 </body>
 </html>
