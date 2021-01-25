@@ -355,6 +355,7 @@ var answer3 = document.querySelector('#ans3');
 var answer4 = document.querySelector('#ans4');
 var startBttn = document.querySelector('#start-button');
 var scoreBttn = document.querySelector('#view-scores');
+var ansDisp = document.querySelector('#question-ans');
 
 // set the score to an empty variable 
 var userScore;
@@ -378,10 +379,21 @@ function nextQ() {
     endQuiz();        
     }
     currQuest.textContent = VKquestions[qIndex].question;
-    answer1.textContent = VKquestions[qIndex].answers[1].text;
-    answer2.textContent = VKquestions[qIndex].answers[2].text;
-    answer3.textContent = VKquestions[qIndex].answers[3].text;
-    answer4.textContent = VKquestions[qIndex].answers[4].text;
+    answer1.textContent = VKquestions[qIndex].answers[0].text;
+    answer2.textContent = VKquestions[qIndex].answers[1].text;
+    answer3.textContent = VKquestions[qIndex].answers[2].text;
+    answer4.textContent = VKquestions[qIndex].answers[3].text;
+};
+
+// display a randomized question
+function randomQ(array) {
+    for (var i = array.length -1; i >0; i--){
+        var s = Math.floor(Math.random() * i);
+        var switchedQ = array[i];
+        array[i] = array[s];
+        array[s] = switchedQ;
+    }
+    nextQ();
 };
 
 // end the assessment
@@ -391,11 +403,24 @@ function endQuiz() {
         timer = 0;
     }
     currQuest.textContent = "Your result will appear here."
+    ansDisp.style.display = "none";
 };
 
 // Event listener to start quiz
 startBttn.addEventListener('click', function startQuiz() {
     startTimer();
+    startBttn.style.display = "none";
+    scoreBttn.style.display = "none";
+    randomQ(VKquestions);
+    document.querySelectorAll("li").forEach(function (choice){
+        choice.addEventListener('click', function(event){
+            if (event.target.points === 0) {
+                timer -= 20;
+                userScore += event.target.points;
+            }
+            nextQ();
+        })
+    })
 });
 
 
