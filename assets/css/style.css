@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+  }
+  
+  html, body {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 10px;
+    background-color: black;
+  }
+  
+.container {
+    border: 3px solid #0cb906;
+    border-radius: 10px;
+    height: 100%;
+    
+  }
+.container > section {
+    padding: 10px;
+    text-align: center;
+    font-size: 2em;
+    color: #0cb906;
+  }
+
+.display {
+    align-items: center;
+    border-top: 1px dashed #0cb906;
+    border-bottom: 1px dashed #0cb906;
+    padding: 50px;
+}
+
+.question-title {
+    text-align: start;
+    font-family: 'Architects Daughter', cursive;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.question-ans {
+    text-align: start;
+    font-family: 'Architects Daughter', cursive;
+    font-size: 1.5rem;
+}
+
+.question-title, .quiz-title {
+    text-align: start;
+}
+
+.timer {
+    text-align: start;
+    vertical-align: 0mm;
+    font-size: 1rem;
+}
+
+h1, button, .timer {
+    font-family: "Audiowide", sans-serif;
+}
+
+footer {
+    margin-top: 10px;
+    text-align: center;
+    padding: 25px;
+    color: goldenrod;
+}
+
+a {
+    color: honeydew;
+}
+
+
+
