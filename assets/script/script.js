@@ -346,6 +346,7 @@ const VKquestions = [
     }
     ]
 
+// collect the elements from the HTML for usage
 var gameTimer = document.querySelector('#time-disp');
 var currQuest = document.querySelector('#curr-quest');
 var answer1 = document.querySelector('#ans1');
@@ -354,16 +355,14 @@ var answer3 = document.querySelector('#ans3');
 var answer4 = document.querySelector('#ans4');
 var startBttn = document.querySelector('#start-button');
 var scoreBttn = document.querySelector('#view-scores');
-var userScore = "";
 
+// set the score to an empty variable 
+var userScore;
+
+// set time variables
 var timer = 240;
 var qIndex = -1;
 var timerInterval;
-
-// Event listener to start quiz
-startBttn.addEventListener('click', function startQuiz() {
-    startTimer();
-});
 
 // start the timer
 function startTimer() {
@@ -372,10 +371,6 @@ function startTimer() {
         gameTimer.textContent = timer;
     },1000)
 };
-
-scoreBttn.addEventListener('click', function loadScore(){
-    console.log("I've also been clicked");
-});
 
 // display the next question
 function nextQ() {
@@ -389,6 +384,7 @@ function nextQ() {
     answer4.textContent = VKquestions[qIndex].answers[4].text;
 };
 
+// end the assessment
 function endQuiz() {
     clearInterval(timerInterval);
     if (timer < 0){
@@ -396,6 +392,16 @@ function endQuiz() {
     }
     currQuest.textContent = "Your result will appear here."
 };
+
+// Event listener to start quiz
+startBttn.addEventListener('click', function startQuiz() {
+    startTimer();
+});
+
+
+scoreBttn.addEventListener('click', function loadScore(){
+    console.log("I've also been clicked");
+});
 
 function calcScore(){
 
