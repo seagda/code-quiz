@@ -33,11 +33,15 @@ If the user scores:
 
 Scores are saved to localStorage, and saved scores are accessed when the user clicks the "Show Scores" button. 
 
+<img src="./assets/img/pic-scores.png" alt="Start Screen" width = "600"/>
+
+
 ------------------
 ## Dependencies
 
-* Bootstrap
-* Google Fonts API
+* [Bootstrap](https://getbootstrap.com/)
+* [Google Fonts API](https://developers.google.com/fonts/docs/getting_started)
+* [Luxon](https://moment.github.io/luxon/index.html)
 
 ------------------
 ## Application Requirements

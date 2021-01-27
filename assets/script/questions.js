@@ -140,7 +140,7 @@ const VKquestions = [
         "The Christmas decorations are still sitting in boxes and bags in the hallway. It's almost March.",
       answers: [
         {
-          text: "Burn them. You can buy new decorations in November",
+          text: "Burn them. You can buy new decorations in November.",
           points: 10,
         },
         {
@@ -188,7 +188,7 @@ const VKquestions = [
           points: 5,
         },
         {
-          text: "fall in",
+          text: "fall in.",
           points: 5,
         },
         {
