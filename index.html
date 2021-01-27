@@ -29,13 +29,25 @@
                         <li id="ans4">Your assessment will be provided upon completion.</li>
                     </ul>
                 </div>
-            
+                <div class="capture-init">
+                    <div class="init-form">
+                        <h3>Voight-Kampff Score: <span id="show-score"></span></h3>
+                        <form method="POST" name="form-init">
+                            <input type="text" id="user-init" name="user-init" placeholder="Enter Your Initials "><br>
+                        <button type="button" class="btn btn-sm btn-outline-success" id="add-init">Save Score</button>
+                    </div>
+
+
+                </div>
+                <div class="display-scores">
+                </div>
             </section>
        </section>
        <section class="button-row row">
            <section class ="col-md-3"></section>
            <section class ="buttons-row col-md-6">
                <button type="button" class="btn btn-lg btn-outline-success" id="start-button">Begin Assessment</button>
+               <button type="button" class="btn btn-lg btn-outline-success" id="restart">Begin Assessment</button>
                <button type="button" class="btn btn-lg btn-outline-warning" id="view-scores">View Scores</button>
            </section>
            <section class ="col-md-3"></section>
