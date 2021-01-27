@@ -493,15 +493,15 @@ restartBttn.addEventListener("click", function() {
 // Display result based on userScore
 function calcScore() {
   if (userScore > 139) {
-    currQuest.textContent = "CONFIRMED REPLICANT";
-    currQuest.style.color = "red";
+      currQuest.textContent = "CONFIRMED REPLICANT";
+      currQuest.style.color = "red";
   } else if (userScore > 99 && userScore < 140) {
-    currQuest.textContent = "Possible Replicant. Surveillance authorized.";
-    currQuest.style.color = "honeydew";
+      currQuest.textContent = "Possible Replicant. Surveillance authorized.";
+      currQuest.style.color = "honeydew";
   } else if (userScore <= 50) {
-    currQuest.textContent = "Confirmed Human.";
-    currQuest.style.color = "#0cb906";
+      currQuest.textContent = "Confirmed Human.";
+      currQuest.style.color = "#0cb906";
   } else {
-    currQuest.textContent = "Probable Human. Await more data.";
+      currQuest.textContent = "Probable Human. Await more data.";
   } 
 };
