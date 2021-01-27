@@ -394,10 +394,8 @@ function nextQ() {
   if (++qIndex === VKquestions.length) {
     endQuiz();
   }
-  //    document.querySelectorAll("li").style.color = "#0cb906";
   currQuest.textContent = VKquestions[qIndex].question;
   answer1.textContent = VKquestions[qIndex].answers[0].text;
-  //answer1.setAttribute("data-id",)
   answer2.textContent = VKquestions[qIndex].answers[1].text;
   answer3.textContent = VKquestions[qIndex].answers[2].text;
   answer4.textContent = VKquestions[qIndex].answers[3].text;
@@ -424,8 +422,7 @@ function endQuiz() {
   ansDisp.style.display = "none";
   scoreDisp.style.display = "inline"; 
   finalScore.textContent = userScore;
-  restartBttn.style.display = "inline";
-//  startBttn.style.display = "inline"; 
+  restartBttn.style.display = "inline"; 
   scoreBttn.style.display = "inline"; 
 }
 
@@ -459,7 +456,13 @@ startBttn.addEventListener("click", function startQuiz() {
 
 // Event listener to go to highscore page
 scoreBttn.addEventListener("click", function loadScores() {
-  console.log("I've also been clicked");
+  scoreBttn.style.display = "none";
+  startBttn.style.display = "none"; 
+  ansDisp.style.display = "none";
+  scoreDisp.style.display = "none";
+  currQuest.textContent = "Previous Player Results"
+  scoresDiv.style.display = "inline-block";
+  restartBttn.style.display = "inline"; 
 });
 
 // Event listener to start quiz
@@ -472,7 +475,8 @@ function calcScore() {
     currQuest.textContent = "CONFIRMED REPLICANT";
     currQuest.style.color = "red";
   } else if (userScore > 99 && userScore < 140) {
-    currQuest.textContent = "Possible Replicant. Recommend surveillance."
+    currQuest.textContent = "Possible Replicant. Surveillance authorized."
+    currQuest.style.color = "goldenrod"
   } else if (userScore <= 50) {
     currQuest.textContent = "Confirmed Human."
   } else {
