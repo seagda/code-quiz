@@ -12,26 +12,27 @@ var scoresDiv = document.querySelector(".display-scores");
 var finalScore = document.querySelector("#show-score");
 var scoreDisp = document.querySelector(".capture-init");
 var restartBttn = document.querySelector("#restart");
+var clearBttn = document.querySelector("#clear-scores")
 var initBttn = document.querySelector("#add-init");
 var enterInit = document.querySelector("#user-init");
-var scoresArray = [];
 restartBttn.style.display = "none";
+clearBttn.style.display = "none";
 
-// set the score to an empty variable
+// set the scores array to an empty variable and start score at 0
+var scoresArray = [];
 var userScore = 0;
 
-// set time variables
-
+// set timer variables
 var timer = 240;
 var qIndex = -1;
 var timerInterval;
 
+// fancy timer formatting
 const Duration = luxon.Duration;
-console.log(Duration);
-console.log(luxon)
+
 // Pull data from localStorage
 var prevScores = JSON.parse(localStorage.getItem("Previous Entries"));
-  console.log(prevScores);
+
 // check data present in local storage if clear button has been clicked
   if (prevScores !== null){
       scoresArray = prevScores;
@@ -45,9 +46,9 @@ function startTimer() {
     timer--;
     var formattedTime = Duration.fromObject({seconds: timer}).toFormat('m:ss');
     gameTimer.textContent = formattedTime;
-    if (timer === 0) {
-        endQuiz();
-      }
+    if (formattedTime === "0:00" || formattedTime.includes("-")) {
+      endQuiz();
+    }
   }, 1000);
 }
 
@@ -82,6 +83,7 @@ function endQuiz() {
     timer = 0;
   }
   calcScore();
+  gameTimer.textContent = "0:00";
   ansDisp.style.display = "none";
   scoreDisp.style.display = "inline"; 
   finalScore.textContent = userScore;
@@ -128,28 +130,41 @@ initBttn.addEventListener("click", function(event) {
       scoreDisp.innerHTML = "<h4>Your score has been saved.</h>";
 });
 
-// Event listener to go to highscore page
+// Event listener to view previous scores
 function userScores() {
     scoreBttn.addEventListener("click", function() {
         scoreBttn.style.display = "none";
         startBttn.style.display = "none"; 
         ansDisp.style.display = "none";
         scoreDisp.style.display = "none";
-        currQuest.textContent = "Previous Player Results:"
+        currQuest.textContent = "Previous Subject Scores:"
         currQuest.style.color = "goldenrod"
         scoresDiv.style.display = "inline-block";
         restartBttn.style.display = "inline"; 
-    scoresArray.forEach(prevScore => {
-        var eachScore = document.createElement("p");
-        eachScore.textContent = prevScore.initials + "--" + prevScore.score;
-        scoresDiv.appendChild(eachScore);
-      })
-   });
+        clearBttn.style.display = "inline";
+        scoresArray.forEach(prevScore => {
+            var eachScore = document.createElement("p");
+            var status = "";
+            if (prevScore.score <= 50) {status = "Confirmed Human"} 
+            else if (prevScore.score > 139) {status = "Confirmed Replicant"}
+            else if (prevScore.score > 99 && prevScore.score < 140) {status = "Possible Replicant"}
+            else {status = "Probable Human"};
+            eachScore.classList.add("prev-score");
+            eachScore.textContent = prevScore.initials + "   |   " + status;
+            scoresDiv.appendChild(eachScore);
+        })
+    });
 };
+
+// Event listener to clear previous searches
+clearBttn.addEventListener("click", function() {
+    localStorage.setItem("Previous Entries", null);
+    location.reload();
+});
 
 // Event listener to start quiz
 restartBttn.addEventListener("click", function() {
-  location.reload();
+    location.reload();
 });
 
 // Display result based on userScore

@@ -11,10 +11,9 @@ body {
   
 .container {
     border: 3px solid #0cb906;
-    border-radius: 10px;
-/*    height: 100%; */
-    
+    border-radius: 10px;    
   }
+
 .container > section {
     padding: 10px;
     text-align: center;
@@ -51,14 +50,13 @@ h1, h3, button, .timer, .question-title {
     margin-top: 15px;
     border: 1px solid #0cb906;
     background-color: #4d574c;
-
 }
 
 .capture-init {
     display: none;
 }
 
-input, .question-ans {
+input, .question-ans, .prev-score {
     text-align: start;
     font-family: 'Architects Daughter', cursive;
     font-size: 1.5rem;
