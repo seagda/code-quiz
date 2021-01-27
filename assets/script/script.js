@@ -94,10 +94,10 @@ const VKquestions = [
   },
   {
     question:
-      "A love song which reminds you of your ex comes on the radio, and you're in a new relationship. Your first instinct is:",
+      "A love song which reminds you of your ex plays. Your first instinct is:",
     answers: [
       {
-        text: "tell your new partner you still have feelings for your ex.",
+        text: "you still have feelings for your ex.",
         points: 0,
       },
       {
@@ -367,6 +367,9 @@ var scoresDiv = document.querySelector(".display-scores");
 var finalScore = document.querySelector("#show-score");
 var scoreDisp = document.querySelector(".capture-init");
 var restartBttn = document.querySelector("#restart");
+var initBttn = document.querySelector("#add-init");
+var enterInit = document.querySelector("#user-init");
+var scoresArray = [];
 restartBttn.style.display = "none";
 
 // set the score to an empty variable
@@ -377,6 +380,8 @@ var userScore = 0;
 var timer = 240;
 var qIndex = -1;
 var timerInterval;
+
+userScores();
 
 // start the timer
 function startTimer() {
@@ -412,7 +417,7 @@ function randomQ(array) {
   nextQ();
 }
 
-// end the assessment
+// end the assessment and display scores
 function endQuiz() {
   clearInterval(timerInterval);
   if (timer < 0) {
@@ -453,33 +458,49 @@ startBttn.addEventListener("click", function startQuiz() {
 });
 
 // Event listener to save score
+initBttn.addEventListener("click", function saveScore(event) {
+    event.preventDefault();
+    var userInits = enterInit.value;
+    scoresArray.push({initials:userInits, score:userScore});
+    console.log(scoresArray);
+    localStorage.setItem("Previous Entries", JSON.stringify(scoresArray));
+    currQuest.innerHTML = "";
+    gameTimer.textContent = "4:00";
+    scoreDisp.innerHTML = "<h4>Your score has been saved.</h>";
+});
+
 
 // Event listener to go to highscore page
-scoreBttn.addEventListener("click", function loadScores() {
-  scoreBttn.style.display = "none";
-  startBttn.style.display = "none"; 
-  ansDisp.style.display = "none";
-  scoreDisp.style.display = "none";
-  currQuest.textContent = "Previous Player Results"
-  scoresDiv.style.display = "inline-block";
-  restartBttn.style.display = "inline"; 
-});
+function userScores() {
+    scoreBttn.addEventListener("click", function loadScores() {
+      scoreBttn.style.display = "none";
+      startBttn.style.display = "none"; 
+      ansDisp.style.display = "none";
+      scoreDisp.style.display = "none";
+      currQuest.textContent = "Previous Player Results:"
+      scoresDiv.style.display = "inline-block";
+//TODO: pull from localstorage to display previous scores
+      restartBttn.style.display = "inline"; 
+  });
+};
 
 // Event listener to start quiz
 restartBttn.addEventListener("click", function() {
   location.reload();
 });
 
+// Display result based on userScore
 function calcScore() {
   if (userScore > 139) {
     currQuest.textContent = "CONFIRMED REPLICANT";
     currQuest.style.color = "red";
   } else if (userScore > 99 && userScore < 140) {
-    currQuest.textContent = "Possible Replicant. Surveillance authorized."
-    currQuest.style.color = "goldenrod"
+    currQuest.textContent = "Possible Replicant. Surveillance authorized.";
+    currQuest.style.color = "honeydew";
   } else if (userScore <= 50) {
-    currQuest.textContent = "Confirmed Human."
+    currQuest.textContent = "Confirmed Human.";
+    currQuest.style.color = "#0cb906";
   } else {
-    currQuest.textContent = "Probable Human. Await more data."
+    currQuest.textContent = "Probable Human. Await more data.";
   } 
 };
