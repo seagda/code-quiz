@@ -1,5 +1,5 @@
-# JavaScript Quiz: Find Out if You're a Replicant
-----------------
+# JavaScript Quiz: Are You a Replicant?
+
 ## Description
 
 "Are You a Replicant?" is a timed quiz built with classic JavaScript, CSS, and HTML.  Designed as a variation of the ever popular [quirky personality quiz](https://www.pinterest.com/roxygirl35/quirky-quizzes/) a la _BuzzFeed_, this quiz pays homage to the [Voight-Kampff](https://nautil.us/blog/the-science-behind-blade-runners-voight_kampff-test)  test from the _Blade Runner_ franchise.
