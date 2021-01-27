@@ -129,7 +129,7 @@ const VKquestions = [
         points: 5,
       },
       {
-        text: "bury the body and call the police.",
+        text: "bury the body and report roommate missing.",
         points: 10,
       },
       {
@@ -254,7 +254,7 @@ const VKquestions = [
         points: 0,
       },
       {
-        text: "Carolina Repear",
+        text: "Carolina Reaper",
         points: 5,
       },
       {
@@ -458,29 +458,30 @@ startBttn.addEventListener("click", function startQuiz() {
 });
 
 // Event listener to save score
-initBttn.addEventListener("click", function saveScore(event) {
-    event.preventDefault();
-    var userInits = enterInit.value;
-    scoresArray.push({initials:userInits, score:userScore});
-    console.log(scoresArray);
-    localStorage.setItem("Previous Entries", JSON.stringify(scoresArray));
-    currQuest.innerHTML = "";
-    gameTimer.textContent = "4:00";
-    scoreDisp.innerHTML = "<h4>Your score has been saved.</h>";
+initBttn.addEventListener("click", function(event) {
+      event.preventDefault();
+      var userInits = enterInit.value;
+      scoresArray.push({initials:userInits, score:userScore});
+      console.log(scoresArray);
+      localStorage.setItem("Previous Entries", JSON.stringify(scoresArray));
+      currQuest.innerHTML = "";
+      gameTimer.textContent = "4:00";
+      scoreDisp.innerHTML = "<h4>Your score has been saved.</h>";
 });
 
 
 // Event listener to go to highscore page
 function userScores() {
-    scoreBttn.addEventListener("click", function loadScores() {
-      scoreBttn.style.display = "none";
-      startBttn.style.display = "none"; 
-      ansDisp.style.display = "none";
-      scoreDisp.style.display = "none";
-      currQuest.textContent = "Previous Player Results:"
-      scoresDiv.style.display = "inline-block";
+    scoreBttn.addEventListener("click", function() {
+        scoreBttn.style.display = "none";
+        startBttn.style.display = "none"; 
+        ansDisp.style.display = "none";
+        scoreDisp.style.display = "none";
+        currQuest.textContent = "Previous Player Results:"
+        currQuest.style.color = "goldenrod"
+        scoresDiv.style.display = "inline-block";
 //TODO: pull from localstorage to display previous scores
-      restartBttn.style.display = "inline"; 
+        restartBttn.style.display = "inline"; 
   });
 };
 
